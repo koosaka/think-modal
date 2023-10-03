@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { ModalProps } from "@/types/modal";
-import { useModalText } from "@/composable/useModalText";
-
-const props = defineProps<ModalProps>();
-const modalMessage = useModalText();
+import { ErrorModalProps } from "@/types/modal";
+import { useErrorModal } from "@/composable/example4/useErrorModal";
+const props = defineProps<ErrorModalProps>();
+const errorModal = useErrorModal();
 
 const modalText = computed(() => {
-  return modalMessage.getModalTextFromErrorCode(props.errorCode);
+  return errorModal.getErrorModalText(props.errorCode);
 });
 </script>
 

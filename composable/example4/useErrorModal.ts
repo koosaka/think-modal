@@ -1,15 +1,15 @@
-import { ModalProps } from "@/types/modal";
+import { ErrorModalProps } from "@/types/modal";
 
 type ExportProps = {
-  getModalTextFromErrorCode: (errorCode: ModalProps["errorCode"]) => {
+  getErrorModalText: (errorCode: ErrorModalProps["errorCode"]) => {
     title: string;
     body: string;
   };
 };
 
-export const useModalText = (): ExportProps => {
+export const useErrorModal = (): ExportProps => {
   const errorCodeMessageMapping: Record<
-    ModalProps["errorCode"],
+    ErrorModalProps["errorCode"],
     { title: string; body: string }
   > = {
     "404": {
@@ -26,12 +26,12 @@ export const useModalText = (): ExportProps => {
     },
   };
 
-  const getModalTextFromErrorCode = (errorCode: ModalProps["errorCode"]) => {
+  const getErrorModalText = (errorCode: ErrorModalProps["errorCode"]) => {
     return {
       title: errorCodeMessageMapping[errorCode].title,
       body: errorCodeMessageMapping[errorCode].body,
     };
   };
 
-  return { getModalTextFromErrorCode };
+  return { getErrorModalText };
 };

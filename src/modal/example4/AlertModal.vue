@@ -1,22 +1,16 @@
 <script setup lang="ts">
-import { ModalProps } from "@/types/modal";
-import { useModalText } from "@/composable/useModalText";
+import { AlertModalProps } from "@/types/modal";
 
-const props = defineProps<ModalProps & { logout: () => {} }>();
-const modalMessage = useModalText();
-
-const modalText = computed(() => {
-  return modalMessage.getModalTextFromErrorCode(props.errorCode);
-});
+const props = defineProps<AlertModalProps>();
 </script>
 
 <template>
   <div class="modal">
     <div class="modal-content">
-      <h4>{{ modalText.title }}</h4>
-      <p>{{ modalText.body }}</p>
+      <h4>アラートモーダルタイトル</h4>
+      <p>アラートモーダルテキスト</p>
       <button @click="props.closeFunc">閉じる</button>
-      <button>ログアウト</button>
+      <button @click="props.logout">ログアウト</button>
     </div>
   </div>
 </template>
